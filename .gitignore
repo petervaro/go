@@ -1,0 +1,9 @@
+# Extensions
+*.DS_Store
+*.pyo
+*.pyc
+*.sublime-workspace
+*.sublime-project
+
+# Folders
+__pycache__
