@@ -294,7 +294,7 @@ syntax = {
             'patterns':
             [
                 {
-                    'name' : 'variable.language.anonymous.{SCOPE}',
+                    'name' : 'keyword.operator.anonymous.{SCOPE}',
                     'match': r'\b(_)\b'
                 },
                 {
@@ -363,6 +363,19 @@ syntax = {
                     'match': r'\\.'
                 }
             ]
+        },
+        'string_fmt':
+        {
+            'name' : 'string.interpolated.format.{SCOPE}',
+            'match': r'%(%|((\[\])|\[(((0)|[1-9])\d*)\])?((#|\+)?v|'
+                     r'((\d+|\*)\.?(\d+|\*)?|\.(\d+|\*))?f|'
+                     r'[bcdeEFgGopqstTxXU]))',
+            'captures':
+            {
+                3: {'name': 'invalid.illegal.interpolated.empty_index.{SCOPE}'},
+                4: {'name': 'storage.modifier.interpolated.format.{SCOPE}'},
+                6: {'name': 'invalid.illegal.interpolated.bad_index.{SCOPE}'},
+            }
         },
         'string_quoted':
         {
@@ -478,6 +491,9 @@ syntax = {
                             {
                                 1: {'name': 'invalid.illegal.string.quoted.double.{SCOPE}'}
                             }
+                        },
+                        {
+                            'include': '#string_fmt'
                         },
                     ],
                     'end': r'"'

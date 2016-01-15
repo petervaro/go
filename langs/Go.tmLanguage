@@ -353,7 +353,7 @@
 					<key>match</key>
 					<string>\b(_)\b</string>
 					<key>name</key>
-					<string>variable.language.anonymous.go</string>
+					<string>keyword.operator.anonymous.go</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -380,6 +380,31 @@
 					<string>invalid.illegal.string.quoted.escape.go</string>
 				</dict>
 			</array>
+		</dict>
+		<key>string_fmt</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>invalid.illegal.interpolated.empty_index.go</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>storage.modifier.interpolated.format.go</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>invalid.illegal.interpolated.bad_index.go</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>%(%|((\[\])|\[(((0)|[1-9])\d*)\])?((#|\+)?v|((\d+|\*)\.?(\d+|\*)?|\.(\d+|\*))?f|[bcdeEFgGopqstTxXU]))</string>
+			<key>name</key>
+			<string>string.interpolated.format.go</string>
 		</dict>
 		<key>string_hex</key>
 		<dict>
@@ -613,6 +638,10 @@
 							<string>(\\|"|\n)</string>
 							<key>name</key>
 							<string>meta.quoted.double.illegal.go</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#string_fmt</string>
 						</dict>
 					</array>
 				</dict>

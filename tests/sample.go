@@ -9,6 +9,10 @@ nil iota true false
 `abc` "\n" "\"" "Hello, world!\n" "\u65e5xyz\U00008a9e" "\xff\u00FF" `\n
 \n`
 
+"%% %v %+v %#v %T %t %b %c %d %o %q %x %X %U %e %E %f %F %g %G %s %p"
+"%9f %.2f %9.2f %9.f %*.f %.*f %*.*f "
+"%[]v %[0]v %[1]v"
+
 var x interface{}
 var v *T
 
