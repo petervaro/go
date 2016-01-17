@@ -94,7 +94,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(func|var)\b</string>
+			<string>\b(type|func|var)\b</string>
 			<key>name</key>
 			<string>keyword.storage.specifiers.go</string>
 		</dict>
@@ -244,19 +244,43 @@
 					<key>match</key>
 					<string>(?&lt;=^|;)\s*(\**)\s*[a-zA-Z_]\w*(?=\s*(;|$))</string>
 					<key>name</key>
-					<string>variable.language.struct.member.anonymous.go</string>
+					<string>variable.struct.member.anonymous.go</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.pointer.go</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.separator.go</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>variable.struct.member.anonymous.go</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?&lt;=^|;)\s*(\**)?\s*([a-zA-Z_]\w*(\.))+([a-zA-Z_]\w*)(?=\s*(;|$))</string>
+					<key>name</key>
+					<string>meta.struct.member.anonymous.go</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;=^|[;.{])\s*[a-zA-Z_]\w*(?=\s*(;|$))</string>
+					<string>(?&lt;=^|[;{])\s*[a-zA-Z_]\w*(?=\s*(;|$))</string>
 					<key>name</key>
-					<string>variable.language.struct.member.anonymous.go</string>
+					<string>variable.struct.member.anonymous.go</string>
 				</dict>
 				<dict>
 					<key>match</key>
 					<string>(?&lt;=^|[,;{])\s*[a-zA-Z_]\w*(?=\s+\w|\s*[\[,*])</string>
 					<key>name</key>
-					<string>variable.language.struct.member.named.go</string>
+					<string>variable.struct.member.named.go</string>
 				</dict>
 			</array>
 		</dict>
@@ -339,7 +363,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(type|struct|interface)\b</string>
+					<string>\b(struct|interface)\b</string>
 					<key>name</key>
 					<string>support.type.member.go</string>
 				</dict>

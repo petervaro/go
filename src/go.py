@@ -101,7 +101,7 @@ syntax = {
         #-- KEYWORDS ----------------------------------------------------------#
         {
             'name' : 'keyword.storage.specifiers.{SCOPE}',
-            'match': r'\b(func|var)\b'
+            'match': r'\b(type|func|var)\b'
         },
         {
             'name' : 'keyword.type.qualifiers.{SCOPE}',
@@ -197,7 +197,7 @@ syntax = {
                     'include': '$self'
                 },
                 {
-                    'name' : 'variable.language.struct.member.anonymous.{SCOPE}',
+                    'name' : 'variable.struct.member.anonymous.{SCOPE}',
                     'match': r'(?<=^|;)\s*(\**)\s*[a-zA-Z_]\w*(?=\s*(;|$))',
                     'captures':
                     {
@@ -205,11 +205,24 @@ syntax = {
                     }
                 },
                 {
-                    'name' : 'variable.language.struct.member.anonymous.{SCOPE}',
-                    'match': r'(?<=^|[;.{])\s*[a-zA-Z_]\w*(?=\s*(;|$))',
+                    'name' : 'meta.struct.member.anonymous.{SCOPE}',
+                    'match': r'(?<=^|;)\s*(\**)?\s*'
+                             r'([a-zA-Z_]\w*(\.))+'
+                             r'([a-zA-Z_]\w*)(?=\s*(;|$))',
+                    'captures':
+                    {
+                        1: {'name': 'keyword.operator.pointer.{SCOPE}'},
+                        3: {'name': 'keyword.operator.separator.{SCOPE}'},
+                        4: {'name': 'variable.struct.member.anonymous.{SCOPE}'},
+
+                    }
                 },
                 {
-                    'name' : 'variable.language.struct.member.named.{SCOPE}',
+                    'name' : 'variable.struct.member.anonymous.{SCOPE}',
+                    'match': r'(?<=^|[;{])\s*[a-zA-Z_]\w*(?=\s*(;|$))',
+                },
+                {
+                    'name' : 'variable.struct.member.named.{SCOPE}',
                     'match': r'(?<=^|[,;{])\s*[a-zA-Z_]\w*(?=\s+\w|\s*[\[,*])'
                 },
             ],
@@ -272,7 +285,7 @@ syntax = {
                 },
                 {
                     'name' : 'support.type.member.{SCOPE}',
-                    'match': r'\b(type|struct|interface)\b'
+                    'match': r'\b(struct|interface)\b'
                 }
             ]
         },
